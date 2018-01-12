@@ -17,6 +17,11 @@ class ActiveSupport::TestCase
   def log_in_as(user)
     session[:user_id] = user.id
   end
+
+  # Log out current user.
+  # def log_out
+  #   session[:user_id] = nil
+  # end
 end
 
 class ActionDispatch::IntegrationTest

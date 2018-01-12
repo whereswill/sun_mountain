@@ -1,8 +1,8 @@
 # Users
-User.create!(name:  "Example User",
+User.create!(name:  "Admin User",
              email: "example@oregonrafting.com",
-             password:              "ouzel",
-             password_confirmation: "ouzel",
+             password:              "ouzel123",
+             password_confirmation: "ouzel123",
              admin:     true,
              activated: true,
              activated_at: Time.zone.now)

@@ -14,9 +14,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    log_in_as(@user)
     get signup_path
     assert_response :success
     assert_select "title", "Sign up | #{@base_title}"
+  end
+
+  test "should redirect new when not an admin" do
+    log_in_as(@other_user)
+    get signup_path
+    assert_redirected_to root_url
   end
 
   test "should redirect edit when not logged in" do

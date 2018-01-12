@@ -2,10 +2,14 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
                                         :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: [:new, :create, :destroy]
 
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    if current_user.admin?
+      @users = User.all.paginate(page: params[:page])
+    else
+      @users = User.where(activated: true).paginate(page: params[:page])
+    end
   end
 
   def show
@@ -22,8 +26,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
+      flash[:warning] = "User added but not activated! The new user must click on the activation link in their email."
+      redirect_to users_url
     else
       render 'new'
     end
