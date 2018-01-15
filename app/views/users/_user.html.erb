@@ -4,11 +4,13 @@
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
-  <% end %>
-  <% if user.activated %>
-  	Verified
-  <% else %>
-  	Resend verification email
+    <span class="verified">
+      <% if user.activated %>
+      	| Verified
+      <% else %>
+        | <%= link_to "Resend verification email", account_activation_path(user), method: :patch %>
+      <% end %>
+    </span>
   <% end %>
 
 </li>
