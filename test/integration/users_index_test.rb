@@ -11,6 +11,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   test "index as non-admin" do
     log_in_as(@non_admin)
     get users_path
+    assert_select 'a', text: 'edit', count: 0
     assert_select 'a', text: 'delete', count: 0
     assert_select 'span', text: 'Verified', count: 0
     first_page_of_users = User.where(activated: true).paginate(page: 1)
@@ -25,6 +26,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     first_page_of_users = User.all.paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
+      assert_select 'a[href=?]', edit_user_path(user), text: 'edit'
       unless user == @admin
         assert_select 'a[href=?]', user_path(user), text: 'delete'
         if user.activated?

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
-                                        :following, :followers]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: [:new, :create, :destroy]
+  before_action :logged_in_user,          only: [:index, :edit, :update, :destroy,
+                                                  :following, :followers]
+  before_action :admin_or_correct_user,   only: [:edit, :update]
+  before_action :admin_user,              only: [:new, :create, :destroy]
 
   def index
     if current_user.admin?
@@ -68,9 +68,18 @@ class UsersController < ApplicationController
 
   private
 
+    # def user_params
+    #   params.require(:user).permit(:name, :email, :password,
+    #                                :password_confirmation)
+    # end
+
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      # List of common params
+      list_params_allowed = [:name, :email, :password,
+                                   :password_confirmation]
+      # Add the params only for admin
+      list_params_allowed << :admin if current_user.admin?
+      params.require(:user).permit(list_params_allowed)
     end
 
     # Before filters
@@ -84,6 +93,11 @@ class UsersController < ApplicationController
     # Confirms an admin user.
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def admin_or_correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
 
 end
