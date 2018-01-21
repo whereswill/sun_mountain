@@ -9,8 +9,21 @@
 
 <%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+<table id="users-list" class="table table-striped">
+  <thead class="table--head">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Last logged in</th>
+      <th scope="col" >Action</th>
+    </tr>
+  </thead>
+
+  <tbody class="table--body">
+    <% @users.each do |user| %>
+      <%= render "user-row", user: user %>
+    <% end %>
+
+  </tbody>
+</table>
 
 <%= will_paginate %>

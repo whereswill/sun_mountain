@@ -2,6 +2,7 @@ module SessionsHelper
 
   # Logs in the given user.
   def log_in(user)
+    user.logged_in_time
     session[:user_id] = user.id
   end
 

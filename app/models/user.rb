@@ -32,6 +32,10 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
+  def logged_in_time
+    update_columns(last_logged_in: Time.zone.now)
+  end
+
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))

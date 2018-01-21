@@ -26,11 +26,14 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     first_page_of_users = User.all.paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
-      assert_select 'a[href=?]', edit_user_path(user), text: 'edit'
+      if user.last_logged_in
+        assert_select 'span', date: user.last_logged_in
+      end
+      assert_select 'a[href=?]', edit_user_path(user)
       unless user == @admin
-        assert_select 'a[href=?]', user_path(user), text: 'delete'
+        assert_select 'a[href=?]', user_path(user)
         if user.activated?
-          assert_select 'span', text: '| Verified'
+          assert_select 'div', text: 'Verified'
         else
           assert_select 'a[href=?]', account_activation_path(user), text: 'Resend verification email'
         end
