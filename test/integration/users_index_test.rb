@@ -14,7 +14,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_select 'a', text: 'edit', count: 0
     assert_select 'a', text: 'delete', count: 0
     assert_select 'span', text: 'Verified', count: 0
-    first_page_of_users = User.where(activated: true).paginate(page: 1)
+    first_page_of_users = User.where(activated: true).order(:name).paginate(page: 1)
     assert_select 'a[href=?]', user_path(@non_active), text: @non_active.name, count: 0
   end
 
@@ -23,7 +23,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_template 'users/index'
     assert_select 'div.pagination'
-    first_page_of_users = User.all.paginate(page: 1)
+    first_page_of_users = User.all.order(:name).paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       if user.last_logged_in
