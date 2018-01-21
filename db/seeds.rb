@@ -5,9 +5,19 @@ User.create!(name:  "Admin User",
              password_confirmation: "ouzel123",
              admin:     true,
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now,
+             last_logged_in: Time.zone.now)
 
-99.times do |n|
+User.create!(name:  "Unactivated User",
+             email: "will@oregonrafting.com",
+             password:              "ouzel123",
+             password_confirmation: "ouzel123",
+             admin:     true,
+             activated: false,
+             activated_at: nil,
+             last_logged_in: Time.zone.now)
+
+98.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@oregonrafting.com"
   password = "password"
@@ -16,7 +26,8 @@ User.create!(name:  "Admin User",
                password:              password,
                password_confirmation: password,
                activated: true,
-               activated_at: Time.zone.now)
+               activated_at: Time.zone.now,
+               last_logged_in: Time.zone.now)
 end
 
 # Microposts
