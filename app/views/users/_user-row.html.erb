@@ -16,7 +16,7 @@
         <% end %>
     </td>
     <td>
-        <span><%= user.last_logged_in %></span>
+        <span><%= user.last_logged_in.to_formatted_s(:long) unless !user.last_logged_in %></span>
     </td>
     <td>
         <% if current_user.admin? %>
