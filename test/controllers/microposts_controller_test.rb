@@ -20,10 +20,19 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "should redirect destroy for wrong micropost" do
+  test "should redirect destroy for wrong micropost not admin" do
+    log_in_as(users(:archer))
+    micropost = microposts(:tone)
+    assert_no_difference 'Micropost.count' do
+      delete micropost_path(micropost)
+    end
+    assert_redirected_to root_url
+  end
+
+  test "should destroy for micropost as admin" do
     log_in_as(users(:michael))
     micropost = microposts(:ants)
-    assert_no_difference 'Micropost.count' do
+    assert_difference 'Micropost.count', -1 do
       delete micropost_path(micropost)
     end
     assert_redirected_to root_url
