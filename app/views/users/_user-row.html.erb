@@ -5,6 +5,8 @@
         <% if user.admin? %>
             <div>Admin</div>
         <% end %>
+    </td>
+    <td>
         <% if current_user.admin? && !current_user?(user) %>
             <div>
             <% if user.activated %>
@@ -16,7 +18,7 @@
         <% end %>
     </td>
     <td>
-        <span><%= user.last_logged_in.to_formatted_s(:long) unless !user.last_logged_in %></span>
+        <span><%= display_date_time(user.last_logged_in) unless !user.last_logged_in %></span>
     </td>
     <td>
         <% if current_user.admin? %>
@@ -25,6 +27,15 @@
             <% end %>
         <% end %>
         <% if current_user.admin? && !current_user?(user) %>
+            <% if user.archived_at %>
+                <%= link_to unarchive_user_path(user), class: "btn btn-default" do %>
+                    <i class="glyphicon glyphicon-open"></i>
+                <% end %>
+            <% else %>
+                <%= link_to archive_user_path(user), class: "btn btn-default" do %>
+                    <i class="glyphicon glyphicon-save"></i>
+                <% end %>
+            <% end %>
             <%= link_to user, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-default" do %>
                 <i class="glyphicon glyphicon-trash"></i>
             <% end %>

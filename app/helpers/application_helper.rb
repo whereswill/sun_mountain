@@ -10,4 +10,12 @@ module ApplicationHelper
     end
   end
 
+  def display_date_time(input_date)
+    return input_date.strftime("%b. %e, %Y at %I:%M%p")
+  end
+
+  def display_date(input_date)
+    return input_date.strftime("%b. %e, %Y")
+  end
+
 end

@@ -2,13 +2,17 @@ class UsersController < ApplicationController
   before_action :logged_in_user,          only: [:index, :edit, :update, :destroy,
                                                   :following, :followers]
   before_action :admin_or_correct_user,   only: [:edit, :update]
-  before_action :admin_user,              only: [:new, :create, :destroy]
+  before_action :admin_user,              only: [:new, :create, :destroy, :archive, :unarchive]
 
   def index
     if current_user.admin?
-      @users = User.all.order(:name).paginate(page: params[:page])
+      if params[:group] == "inactive"
+        @users = User.where.not(archived_at: [nil, ""]).order(:name).paginate(page: params[:page])
+      else
+        @users = User.where(archived_at: [nil, ""]).order(:name).paginate(page: params[:page])
+      end
     else
-      @users = User.where(activated: true).order(:name).paginate(page: params[:page])
+      @users = User.where(activated: true, archived_at: [nil, ""]).order(:name).paginate(page: params[:page])
     end
   end
 
@@ -48,6 +52,18 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
+    redirect_to users_url
+  end
+
+  def archive
+    User.find(params[:id]).archive
+    flash[:success] = "User archived"
+    redirect_to users_url
+  end
+
+  def unarchive
+    User.find(params[:id]).unarchive
+    flash[:success] = "User unarchived"
     redirect_to users_url
   end
 

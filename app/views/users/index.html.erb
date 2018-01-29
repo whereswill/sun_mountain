@@ -3,7 +3,7 @@
 
 <% if current_user.admin? %>
 	<p id="add_user_btn">
-	<%= link_to "Add User", signup_path, class: "btn btn-lg btn-primary" %>
+	<%= link_to "Add User", signup_path, class: "btn btn-primary" %>
 	</p>
 <% end %>
 
@@ -13,6 +13,7 @@
   <thead class="table--head">
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Email Verified?</th>
       <th scope="col">Last logged in</th>
       <th scope="col" >Action</th>
     </tr>

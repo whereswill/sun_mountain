@@ -87,6 +87,14 @@ class User < ApplicationRecord
                      OR user_id = :user_id", user_id: id)
   end
 
+  def archive
+    update_columns(archived_at: Time.zone.now)
+  end
+
+  def unarchive
+    update_columns(archived_at: nil)
+  end
+
   # Follows a user.
   def follow(other_user)
     following << other_user
