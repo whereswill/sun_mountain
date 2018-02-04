@@ -23,6 +23,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_template 'users/index'
     assert_select 'div.pagination'
+    assert_select 'a[href=?]', signup_path
     first_page_of_users = User.all.order(:name).paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
@@ -31,6 +32,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
       end
       assert_select 'a[href=?]', edit_user_path(user)
       unless user == @admin
+        assert_select 'a[href=?]', archive_user_path(user)
         assert_select 'a[href=?]', user_path(user)
         if user.activated?
           assert_select 'div', text: 'Verified'
