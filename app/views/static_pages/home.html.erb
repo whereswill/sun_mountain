@@ -8,17 +8,16 @@
   </div>
 <% else %>
   <div class="center jumbotron">
-    <h1><%= "Welcome to #{ENV["COMPANY_NAME"]} Website Portal" %></h1>
+    <h1><%= "Welcome to #{ENV["COMPANY_NAME"]}" %></h1>
 
     <h2>
-      This is the home page for the
-      <a href="<%= ENV["COMPANY_URL"] %>"><%= ENV["COMPANY_NAME"] %></a>
-      guides to do their thang.
+      This is the home page message for 
+      <a href="<%= ENV["COMPANY_URL"] %>"><%= ENV["COMPANY_NAME"] %></a>.
     </h2>
 
     <%= link_to "Log in now!", login_path, class: "btn btn-lg btn-primary" %>
   </div>
 
-  <%= link_to image_tag("Ouzel37YearLogo.png", alt: "Ouzel's 37th Anniversary"),
-              'http://oregonrafting.com/' %>
+  <%= link_to image_tag("http://acmelogos.com/images/logo-6.svg", alt: "Company Logo"),
+              ENV["COMPANY_URL"] %>
 <% end %>
