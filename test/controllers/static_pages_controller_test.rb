@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
 	def setup
-		@base_title = "OuzelGuides"
+		@base_title = ENV["COMPANY_NAME"]
 	end
 
   test "should get root" do

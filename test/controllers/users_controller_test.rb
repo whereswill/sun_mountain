@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
 
 	def setup
-		@base_title = "OuzelGuides"
+		@base_title = ENV["COMPANY_NAME"]
     @user = users(:michael)
     @other_user = users(:archer)
 	end
