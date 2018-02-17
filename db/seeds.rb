@@ -29,9 +29,3 @@ User.create!(name:  "Unactivated User",
                activated_at: Time.zone.now,
                last_logged_in: Time.zone.now)
 end
-
-users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Hipster.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
-end
