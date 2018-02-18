@@ -5,6 +5,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
   def setup
     ActionMailer::Base.deliveries.clear
     @user = users(:michael)
+    @archived = users(:jane)
   end
 
   test "password resets" do
@@ -12,6 +13,10 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_template 'password_resets/new'
     # Invalid email
     post password_resets_path, params: { password_reset: { email: "" } }
+    assert_not flash.empty?
+    assert_template 'password_resets/new'
+    # Archived user
+    post password_resets_path, params: { password_reset: { email: @archived.email } }
     assert_not flash.empty?
     assert_template 'password_resets/new'
     # Valid email

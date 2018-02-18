@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      if params[:group] == "inactive"
+      if params[:group] == "archived"
         @users = User.where.not(archived_at: [nil, ""]).order(:name).paginate(page: params[:page])
       else
         @users = User.where(archived_at: [nil, ""]).order(:name).paginate(page: params[:page])

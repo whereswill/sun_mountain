@@ -8,13 +8,17 @@ class PasswordResetsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
-    if @user
+    if @user && !@user.archived_at?
       @user.create_reset_digest
       @user.send_password_reset_email
       flash[:info] = "Email sent with password reset instructions"
       redirect_to root_url
     else
-      flash.now[:danger] = "Email address not found"
+      if @user && @user.archived_at?
+        flash.now[:danger] = "Account archived. Please contact #{ENV["COMPANY_NAME"]}."
+      else
+        flash.now[:danger] = "Email address not found"
+      end
       render 'new'
     end
   end

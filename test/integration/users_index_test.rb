@@ -24,7 +24,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_template 'users/index'
     assert_select 'div.pagination'
     assert_select 'a[href=?]', signup_path
-    first_page_of_users = User.all.order(:name).paginate(page: 1)
+    first_page_of_users = User.where(archived_at: nil).order(:name).paginate(page: 1)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       if user.last_logged_in

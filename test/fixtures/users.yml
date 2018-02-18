@@ -39,6 +39,15 @@ lex:
   activated_at: null
   last_logged_in: null
 
+jane:
+  name: Jane Johnson
+  email: jane@example.gov
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  last_logged_in: <%= Time.zone.now %>
+  archived_at: <%= Time.zone.now %>
+
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User-#{n}" %>
