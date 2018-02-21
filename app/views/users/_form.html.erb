@@ -1,5 +1,5 @@
-<%= form_for(@user, yield(:path_text)) do |f| %>
-  <%= render 'shared/error_messages', object: @user %>
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages' %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
@@ -10,8 +10,23 @@
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation %>
+  <%= f.label :password_confirmation, "Confirmation" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% if current_user.admin? %>
+    <%= f.label :admin, class: "checkbox inline" do %>
+      <%= f.check_box :admin %>
+      <span>Make Administrator</span>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+      <%= link_to "Cancel", users_path, :class => "btn btn-danger" %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+  </div>
 <% end %>
+
+<div class="gravatar_edit">
+  <%= gravatar_for @user %>
+  <a href="http://gravatar.com/emails" target="_blank">change</a>
+</div>

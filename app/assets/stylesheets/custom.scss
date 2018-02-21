@@ -145,13 +145,33 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  _width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
 input {
   height: auto !important;
+}
+
+.actions .btn {
+  float: right;
+  margin-left: 8px;
+}
+
+.actions {
+  a:link { 
+  color: #333333;
+  }
+  a:visited { 
+    color: #FFFFFF;
+  }
+  a:hover { 
+    color: #FFFFFF;
+  }
+  a:active { 
+    color: #333333;
+  }
 }
 
 #error_explanation {
@@ -193,6 +213,11 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/* Tables - general */
+.action_col {
+  width: 150px;
 }
 
 /* miscellaneous */

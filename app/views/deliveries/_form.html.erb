@@ -1,0 +1,48 @@
+<%= form_for(delivery) do |f| %>
+  <% if delivery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
+
+      <ul>
+      <% delivery.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :address1 %>
+    <%= f.text_field :address1, class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address2 %>
+    <%= f.text_field :address2, class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %>
+    <%= f.text_field :state, class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code, class: 'form-control'  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes %>
+    <%= f.text_area :notes, class: 'form-control'  %>
+  </div>
+
+  <div class="actions">
+      <%= link_to "Cancel", deliveries_path, :class => "btn btn-danger" %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+  </div>
+<% end %>

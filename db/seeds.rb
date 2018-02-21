@@ -29,3 +29,13 @@ User.create!(name:  "Activate This User",
                activated_at: Time.zone.now,
                last_logged_in: Time.zone.now)
 end
+
+55.times do |n|
+  Delivery.create!(address1: Faker::Address.street_address,
+                   address2: Faker::Address.secondary_address,
+                   city:     Faker::Address.city,
+                   state:    Faker::Address.state_abbr,
+                   zip_code: Faker::Address.zip_code,
+                   notes:    Faker::Seinfeld.quote)
+end
+

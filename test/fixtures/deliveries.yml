@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address1: "1445 NW Giminy Street"
+  address2: "Apt. 65"
+  city: "Tumalo"
+  state: "OR"
+  zip_code: "97778"
+  notes: "This is a place to put notes."
+
+<% 30.times do |n| %>
+delivery_<%= n %>:
+  address1: <%= Faker::Address.street_address %>
+  address2: <%= Faker::Address.secondary_address %>
+  city: <%= Faker::Address.city %>
+  state: <%= Faker::Address.state_abbr %>
+  zip_code: <%= Faker::Address.zip_code %>
+  notes: <%= Faker::Seinfeld.quote %>
+<% end %>
