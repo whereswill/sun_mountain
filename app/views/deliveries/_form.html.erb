@@ -1,12 +1,13 @@
 <%= form_for(delivery) do |f| %>
   <% if delivery.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
-
+      <div class="alert alert-danger">
+        <h2><%= pluralize(delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
       <ul>
       <% delivery.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
+      </div>
       </ul>
     </div>
   <% end %>
