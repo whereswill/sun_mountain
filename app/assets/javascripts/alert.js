@@ -1,26 +1,3 @@
-
-// this flashes on deliveries for a quick second
-// $(document).ready(function() {
-//     $(".alert").fadeTo(500, 0).slideUp(500, function(){
-//         $(this).remove(); 
-//     });
-// }, 4000);
-
-// this works just on deliveries
-// window.setTimeout(function() {
-//     $(".alert").fadeTo(500, 0).slideUp(500, function(){
-//         $(this).remove(); 
-//     });
-// }, 4000);
-
-// Web snippet
-// $(document).ready( function() {
-//     $('.alert').delay(5000).fadeOut();
-//   });
-
-
-// Chad's code from the DAM app
-
 //"use strict";
 
 $(document).on('turbolinks:load', loadedFlash);
