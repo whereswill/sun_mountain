@@ -1,27 +1,27 @@
-<% provide(:title, 'Deliveries') %>
+<% provide(:title, 'Accounts') %>
 
-<h1>Deliveries</h1>
+<h1>Accounts</h1>
 
 <span class="actions">
-  <%= link_to 'Add Delivery', new_delivery_path, class: "btn btn-primary"  %>
+  <%= link_to 'Add Account', new_account_path, class: "btn btn-primary"  %>
 </span>
 
 <table id="users-list" class="table table-striped">
   <thead class="table--head">
     <tr>
-      <th scope="col">Address1</th>
-      <th scope="col">Address2</th>
+      <th scope="col">Address 1</th>
+      <th scope="col">Address 2</th>
       <th scope="col">City</th>
       <th scope="col">State</th>
       <th scope="col">Zip code</th>
-      <th scope="col">Notes</th>
+      <th scope="col">Account Notes</th>
       <th scope="col" class='action_col'>Action</th>
     </tr>
   </thead>
 
   <tbody class="table--body">
-    <% @deliveries.each do |delivery| %>
-      <%= render "delivery-row", delivery: delivery %>
+    <% @accounts.each do |account| %>
+      <%= render "account-row", account: account %>
     <% end %>
   </tbody>
 </table>

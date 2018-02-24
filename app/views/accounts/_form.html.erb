@@ -1,6 +1,6 @@
-<%= form_for(delivery) do |f| %>
+<%= form_for(account) do |f| %>
 
-  <%= render 'shared/error_messages', target: delivery %>
+  <%= render 'shared/error_messages', target: account %>
 
   <div class="field">
     <%= f.label :address1 %>
@@ -33,7 +33,7 @@
   </div>
 
   <div class="actions">
-      <%= link_to "Cancel", deliveries_path, :class => "btn btn-danger" %>
+      <%= link_to "Cancel", accounts_path, :class => "btn btn-danger" %>
       <%= f.submit "Save changes", class: "btn btn-primary" %>
   </div>
 <% end %>

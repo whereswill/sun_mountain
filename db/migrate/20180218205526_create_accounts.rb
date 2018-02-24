@@ -1,6 +1,6 @@
-class CreateDeliveries < ActiveRecord::Migration[5.0]
+class CreateAccounts < ActiveRecord::Migration[5.0]
   def change
-    create_table :deliveries do |t|
+    create_table :accounts do |t|
       t.string :address1
       t.string :address2
       t.string :city

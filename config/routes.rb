@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :deliveries
+  resources :accounts
   get 'password_resets/new'
 
   get 'password_resets/edit'

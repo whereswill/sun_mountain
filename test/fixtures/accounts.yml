@@ -9,7 +9,7 @@ one:
   notes: "This is a place to put notes."
 
 <% 30.times do |n| %>
-delivery_<%= n %>:
+account_<%= n %>:
   address1: <%= Faker::Address.street_address %>
   address2: <%= Faker::Address.secondary_address %>
   city: <%= Faker::Address.city %>

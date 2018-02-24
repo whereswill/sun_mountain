@@ -1,6 +1,6 @@
 # Sun Mountain Water
 
-This is an application for this company to administer and bill its water delivery clients
+This is an application for this company to administer and bill its water account clients
 
 The authentication portion of this app are adapted from the 
 most awesome [*Ruby on Rails Tutorial:

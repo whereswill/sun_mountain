@@ -31,7 +31,7 @@ User.create!(name:  "Activate This User",
 end
 
 55.times do |n|
-  Delivery.create!(address1: Faker::Address.street_address,
+  Account.create!(address1: Faker::Address.street_address,
                    address2: Faker::Address.secondary_address,
                    city:     Faker::Address.city,
                    state:    Faker::Address.state_abbr,
