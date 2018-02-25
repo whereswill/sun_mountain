@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account,            only: [:show, :edit, :update, :destroy]
+  before_action :set_account,             only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user,          only: [:index, :create, :edit, :update, :destroy]
   before_action :admin_user,              only: [:destroy]
 
@@ -63,6 +63,7 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:address1, :address2, :city, :state, :zip_code, :notes)
+      params.require(:account).permit(:account_number, :first_name, :last_name, :address1, :address2, :city,
+                                      :state, :zip_code, :phone, :email, :notes)
     end
 end

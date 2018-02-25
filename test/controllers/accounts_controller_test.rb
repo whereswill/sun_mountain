@@ -28,7 +28,14 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
   test "should create account" do
     log_in_as(@user)
     assert_difference('Account.count') do
-      post accounts_url, params: { account: { address1: @account.address1, address2: @account.address2, city: @account.city, notes: @account.notes, state: @account.state, zip_code: @account.zip_code } }
+      post accounts_url, params: { account: { account_number: "WW546",
+                                              first_name: @account.first_name,
+                                              last_name: @account.last_name,
+                                              address1: @account.address1,
+                                              city: @account.city,
+                                              state: @account.state,
+                                              zip_code: @account.zip_code,
+                                              phone: @account.phone } }
     end
 
     assert_redirected_to account_url(Account.last)
@@ -36,7 +43,14 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect create account when not logged in" do
     assert_no_difference 'Account.count' do
-      post accounts_url, params: { account: { address1: @account.address1, address2: @account.address2, city: @account.city, notes: @account.notes, state: @account.state, zip_code: @account.zip_code } }
+      post accounts_url, params: { account: { account_number: "WW789",
+                                              first_name: @account.first_name,
+                                              last_name: @account.last_name,
+                                              address1: @account.address1,
+                                              city: @account.city,
+                                              state: @account.state,
+                                              zip_code: @account.zip_code,
+                                              phone: @account.phone } }
     end
 
     assert_redirected_to login_url
@@ -65,7 +79,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to account_url(@account)
   end
 
-  test "should redirect account when not logged in" do
+  test "should redirect update account when not logged in" do
     patch account_url(@account), params: { account: { address1: @account.address1, address2: @account.address2, city: @account.city, notes: @account.notes, state: @account.state, zip_code: @account.zip_code } }
     assert_redirected_to login_url
   end

@@ -31,11 +31,15 @@ User.create!(name:  "Activate This User",
 end
 
 55.times do |n|
-  Account.create!(address1: Faker::Address.street_address,
-                   address2: Faker::Address.secondary_address,
-                   city:     Faker::Address.city,
-                   state:    Faker::Address.state_abbr,
-                   zip_code: Faker::Address.zip_code,
-                   notes:    Faker::Seinfeld.quote)
+  Account.create!(address1:     Faker::Address.street_address,
+                   address2:    Faker::Address.secondary_address,
+                   city:        Faker::Address.city,
+                   state:       Faker::Address.state_abbr,
+                   zip_code:    Faker::Address.zip_code,
+                   notes:       Faker::Seinfeld.quote,
+                   first_name:  Faker::Name.first_name,
+                   last_name:   Faker::Name.last_name,
+                   account_number:   Faker::Number.number(4),
+                   phone:       Faker::PhoneNumber.phone_number,
+                   email:       "email-#{n+1}@example.com")
 end
-
