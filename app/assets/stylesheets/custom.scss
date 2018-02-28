@@ -159,7 +159,7 @@ input {
   margin-left: 8px;
 }
 
-.actions {
+.actions, .page-header {
   a:link { 
   color: #333333;
   }
@@ -216,11 +216,25 @@ input {
 }
 
 /* Tables - general */
+
 .action_col {
-  width: 150px;
+  width: 120px;
+}
+
+#accounts_filter {
+  float: right;
 }
 
 /* miscellaneous */
+
+.page-header {
+  h1 {
+    margin-bottom: 15px;
+  }
+  .btn {
+    margin-bottom: 20px;
+  }
+}
 
 .debug_dump {
   clear: both;
