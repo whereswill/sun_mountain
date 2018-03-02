@@ -15,14 +15,14 @@ class AccountsIndexTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', account_path(@account)
     assert_select 'a[href=?]', edit_account_path(@account)
     assert_select "i.glyphicon-trash", count: 0
-    assert_select 'div.pagination'
+    assert_select 'div#accounts_paginate'
   end
 
   test "accounts as admin including pagination and delete links" do
     log_in_as(@admin)
     get accounts_path
     assert_template 'accounts/index'
-    assert_select 'div.pagination'
+    assert_select 'div#accounts_paginate'
     first_page_of_accounts = Account.all.paginate(page: 1)
     first_page_of_accounts.each do |del|
       assert_select 'a[href=?]', account_path(del)

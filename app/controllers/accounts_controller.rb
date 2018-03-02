@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all.paginate(page: params[:page])
+    @accounts = Account.all
   end
 
   # GET /accounts/1

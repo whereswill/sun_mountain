@@ -14,4 +14,37 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require turbolinks
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    $("table[role='datatable']").DataTable({
+  // ajax: ...,
+  // autoWidth: false,
+
+  pagingType: 'full_numbers',
+  'aoColumnDefs': [{
+        'bSortable': false,
+        'aTargets': ['nosort']
+    }]
+  // processing: true,
+  // serverSide: true,
+
+  // Optional, if you want full pagination controls.
+  // Check dataTables documentation to learn more about available options.
+  // http://datatables.net/reference/option/pagingType
+});
+} );
+
+
+
+// $(document).on('turbolinks:load', function(){
+//   $("table[role='datatable']").each(function(){
+//     $(this).DataTable({
+//       processing: true,
+//       serverSide: true,
+//       ajax: $(this).data('url')
+//     });
+//   });  
+// })
