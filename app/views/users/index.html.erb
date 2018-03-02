@@ -1,29 +1,29 @@
 <% provide(:title, 'All users') %>
-<h1>All users</h1>
 
-<% if current_user.admin? %>
-  <span class="actions">
-    <%= link_to 'Add User', signup_path, class: "btn btn-primary"  %>
-  </span>
-<% end %>
+<div class="row page-header">
+  <h1>All users</h1>
+  <% if current_user.admin? %>
+    <div class="center">
+      <%= link_to 'Add User', signup_path, class: "btn btn-primary"  %>
+    </div>
+  <% end %>
+</div>
 
-<%= will_paginate %>
+<div class="row">
+  <table id="users" role="datatable" class="display">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email Verified?</th>
+        <th>Last logged in</th>
+        <th class='action_col nosort' >Action</th>
+      </tr>
+    </thead>
 
-<table id="users-list" class="table table-striped">
-  <thead class="table--head">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email Verified?</th>
-      <th scope="col">Last logged in</th>
-      <th scope="col" class='action_col' >Action</th>
-    </tr>
-  </thead>
-
-  <tbody class="table--body">
-    <% @users.each do |user| %>
-      <%= render "user-row", user: user %>
-    <% end %>
-  </tbody>
-</table>
-
-<%= will_paginate %>
+    <tbody>
+      <% @users.each do |user| %>
+        <%= render "user-row", user: user %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

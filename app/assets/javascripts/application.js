@@ -13,17 +13,21 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
+//= require turbolinks
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require turbolinks
-//= require jquery.turbolinks
 //= require_tree .
 
-$(document).ready(function() {
-    $('#accounts').DataTable({
+$(document).on('turbolinks:load', function() {
+    $("table[role='datatable']").DataTable({
   // ajax: ...,
   // autoWidth: false,
+
   pagingType: 'full_numbers',
+  'aoColumnDefs': [{
+        'bSortable': false,
+        'aTargets': ['nosort']
+    }]
   // processing: true,
   // serverSide: true,
 
@@ -32,3 +36,15 @@ $(document).ready(function() {
   // http://datatables.net/reference/option/pagingType
 });
 } );
+
+
+
+// $(document).on('turbolinks:load', function(){
+//   $("table[role='datatable']").each(function(){
+//     $(this).DataTable({
+//       processing: true,
+//       serverSide: true,
+//       ajax: $(this).data('url')
+//     });
+//   });  
+// })
