@@ -11,10 +11,12 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
   test "index as non-admin" do
     log_in_as(@non_admin)
     get users_path
+    assert_template 'users/index'
+    assert_select 'table#users'
     assert_select 'a', text: 'edit', count: 0
     assert_select "i.glyphicon-trash", count: 0
     assert_select 'span', text: 'Verified', count: 0
-    first_page_of_users = User.where(activated: true).order(:name).paginate(page: 1)
+    first_page_of_users = User.where(activated: true).order(:name)
     assert_select 'a[href=?]', user_path(@non_active), text: @non_active.name, count: 0
   end
 
@@ -22,9 +24,9 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     get users_path
     assert_template 'users/index'
-    assert_select 'div.pagination'
+    assert_select 'table#users'
     assert_select 'a[href=?]', signup_path
-    first_page_of_users = User.where(archived_at: nil).order(:name).paginate(page: 1)
+    first_page_of_users = User.where(archived_at: nil).order(:name)
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       if user.last_logged_in

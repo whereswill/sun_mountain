@@ -11,19 +11,20 @@ class AccountsIndexTest < ActionDispatch::IntegrationTest
   test "accounts as non-admin" do
     log_in_as(@non_admin)
     get accounts_path
+    assert_template 'accounts/index'
+    assert_select 'table#accounts'
     assert_select 'a[href=?]', new_account_path
     assert_select 'a[href=?]', account_path(@account)
     assert_select 'a[href=?]', edit_account_path(@account)
     assert_select "i.glyphicon-trash", count: 0
-    assert_select 'div#accounts_paginate'
   end
 
   test "accounts as admin including pagination and delete links" do
     log_in_as(@admin)
     get accounts_path
     assert_template 'accounts/index'
-    assert_select 'div#accounts_paginate'
-    first_page_of_accounts = Account.all.paginate(page: 1)
+    assert_select 'table#accounts'
+    first_page_of_accounts = Account.all
     first_page_of_accounts.each do |del|
       assert_select 'a[href=?]', account_path(del)
       assert_select 'a[href=?]', edit_account_path(del)

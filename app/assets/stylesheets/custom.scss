@@ -176,10 +176,16 @@ input {
 
 #error_explanation {
   color: red;
+  _margin-top: 200px;
   ul {
     color: red;
     margin: 0 0 10px 0;
+    _padding-top: 200px;
   }
+}
+
+.alert {
+  margin-top: 30px;
 }
 
 .field_with_errors {
@@ -250,6 +256,7 @@ table.dataTable thead .sorting {
 /* miscellaneous */
 
 .page-header {
+  margin-top: 20px;
   h1 {
     margin-bottom: 15px;
   }

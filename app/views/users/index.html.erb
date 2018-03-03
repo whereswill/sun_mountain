@@ -1,7 +1,7 @@
 <% provide(:title, 'All users') %>
 
 <div class="row page-header">
-  <h1>All users</h1>
+  <h1>Users</h1>
   <% if current_user.admin? %>
     <div class="center">
       <%= link_to 'Add User', signup_path, class: "btn btn-primary"  %>
