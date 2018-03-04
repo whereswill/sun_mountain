@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :accounts
+
+  resources :accounts do
+    resources :mailing_addresses
+  end
+
   get 'password_resets/new'
 
   get 'password_resets/edit'

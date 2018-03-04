@@ -5,53 +5,47 @@
 </div>
 
 <div class='row'>
-  <p>
-    <strong>Name:</strong>
-    <%= @account.first_name + " " + @account.last_name %>
-  </p>
+  <div class="col-md-4 info-box">
+    <h3>Account Info</h3>
+    <p>
+      <%= @account.first_name + " " + @account.last_name %>
+      <br />
+      <%= @account.phone %>
+      <br />
+      <%= @account.email %>
+      <br />
+      <%= @account.address1 %>
+      <br />
+      <%= @account.address2 %>
+      <br />
+      <%= @account.city + ", " + @account.state + "  " + @account.zip_code %>
+      <br />
+      <strong>Notes:</strong>
+      <br />
+      <%= @account.notes %>
+    </p>
+    <div class="actions-left">
+        <%= link_to "Edit Account", edit_account_path(@account), :class => "btn btn-primary" %>
+    </div>
+  </div>
 
-  <p>
-    <strong>Phone Number:</strong>
-    <%= @account.phone %>
-  </p>
-
-  <p>
-    <strong>Email Address:</strong>
-    <%= @account.email %>
-  </p>
-
-  <p>
-    <strong>Address 1:</strong>
-    <%= @account.address1 %>
-  </p>
-
-  <p>
-    <strong>Address 2:</strong>
-    <%= @account.address2 %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= @account.city %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= @account.state %>
-  </p>
-
-  <p>
-    <strong>Zip code:</strong>
-    <%= @account.zip_code %>
-  </p>
-
-  <p>
-    <strong>Notes:</strong>
-    <%= @account.notes %>
-  </p>
-</div>
-
-<div class="row actions">
-    <%= link_to "Back", accounts_path, :class => "btn btn-danger" %>
-    <%= link_to "Edit", edit_account_path(@account), :class => "btn btn-primary" %>
+  <div class="col-md-4 info-box">
+    <h3>Mailing Address</h3>
+    <% if @account.mailing_address %>
+    <p>
+      <%= @account.mailing_address.address1 %>
+        <br />
+      <%= @account.mailing_address.address2 %>
+        <br />
+      <%= @account.mailing_address.city + ", " + @account.mailing_address.state + "  " + @account.mailing_address.zip_code %>
+    </p>
+    <div class="actions-left">
+        <%= link_to "Edit Mailing Address", edit_account_mailing_address_path(@account), :class => "btn btn-primary" %>
+    </div>
+    <% else %>
+    <div class="actions-left">
+        <%= link_to "Add Mailing Address", new_account_mailing_address_path(@account), :class => "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
 </div>

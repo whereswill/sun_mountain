@@ -1,0 +1,38 @@
+<%= form_for(@account.mailing_address) do |f| %>
+
+  <%= render 'shared/error_messages', target: @account.mailing_address %>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="field">
+        <%= f.label :address1 %>
+        <%= f.text_field :address1, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address2 %>
+        <%= f.text_field :address2, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.text_field :state, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code, class: 'form-control'  %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+      <%= link_to "Cancel", accounts_path, :class => "btn btn-danger" %>
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,5 +1,7 @@
 class Account < ApplicationRecord
 
+  has_one :mailing_address, dependent: :destroy
+
   before_save   :downcase_email
   validates :account_number, presence: true,
                              uniqueness: { case_sensitive: false }

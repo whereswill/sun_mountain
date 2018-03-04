@@ -159,9 +159,14 @@ input {
   margin-left: 8px;
 }
 
-.actions, .page-header {
+.actions-left .btn {
+  float: left;
+  margin-right: 8px;
+}
+
+.actions, .actions-left, .page-header {
   a:link { 
-  color: #333333;
+  color: #FFFFFF;
   }
   a:visited { 
     color: #FFFFFF;
@@ -170,7 +175,7 @@ input {
     color: #FFFFFF;
   }
   a:active { 
-    color: #333333;
+    color: #FFFFFF;
   }
 }
 
@@ -254,6 +259,10 @@ table.dataTable thead .sorting {
 }
 
 /* miscellaneous */
+
+.info-box p {
+    margin: 0 0 10px 0;
+}
 
 .page-header {
   margin-top: 20px;
