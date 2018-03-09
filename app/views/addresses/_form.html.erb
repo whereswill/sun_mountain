@@ -1,0 +1,49 @@
+<%= form_for([@address.account, @address]) do |f| %>
+
+  <%= render 'shared/error_messages', target: @address %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.label :care_of %>
+        <%= f.text_field :care_of, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address_type %>
+        <%= f.select(:address_type, [['Point of Delivery', 1], ['Mailing Address', 2]]) %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.label :address1 %>
+        <%= f.text_field :address1, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address2 %>
+        <%= f.text_field :address2, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.text_field :state, class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :zip_code %>
+        <%= f.text_field :zip_code, class: 'form-control'  %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+      <%= link_to "Cancel", account_path(@account), :class => "btn btn-danger" %>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

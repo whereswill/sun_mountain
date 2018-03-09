@@ -30,6 +30,7 @@ User.create!(name:  "Activate This User",
                last_logged_in: Time.zone.now)
 end
 
+# Accounts
 55.times do |n|
   Account.create!(address1:     Faker::Address.street_address,
                    address2:    Faker::Address.secondary_address,
@@ -43,3 +44,16 @@ end
                    phone:       Faker::PhoneNumber.phone_number,
                    email:       "email-#{n+1}@example.com")
 end
+
+#  Addresses
+accounts = Account.order(:account_number).take(6)
+  accounts.each do |account|
+    account.addresses.create!(address_type:      1,
+                            care_of:      Faker::Name.name,
+                            address1:     Faker::Address.street_address,
+                            address2:     Faker::Address.secondary_address,
+                            city:         Faker::Address.city,
+                            state:        Faker::Address.state_abbr,
+                            zip_code:     Faker::Address.zip_code)
+  end
+3

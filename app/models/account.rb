@@ -9,4 +9,6 @@ class Account < ApplicationRecord
   validates :email, length: { maximum: 255 },
                     allow_blank: true,
                     format: { with: VALID_EMAIL_REGEX }
+
+  has_many :addresses, dependent: :destroy
 end

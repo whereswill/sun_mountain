@@ -5,53 +5,67 @@
 </div>
 
 <div class='row'>
-  <p>
-    <strong>Name:</strong>
-    <%= @account.first_name + " " + @account.last_name %>
-  </p>
+  <div class="col-md-4 info-box">
+    <h3>Account Info</h3>
+    <p>
+      <%= @account.first_name + " " + @account.last_name %>
+      <br />
+      <%= @account.phone %>
+      <br />
+      <%= @account.email %>
+      <br />
+      <%= @account.address1 %>
+      <br />
+      <%= @account.address2 %>
+      <br />
+      <%= @account.city + ", " + @account.state + "  " + @account.zip_code %>
+      <br />
+      <strong>Notes:</strong>
+      <br />
+      <%= @account.notes %>
+    </p>
+    <div class="actions-left">
+      <%= link_to "Back", accounts_path, :class => "btn btn-danger" %>
+      <%= link_to "Edit Account", edit_account_path(@account), :class => "btn btn-primary" %>
+    </div>
+  </div>
 
-  <p>
-    <strong>Phone Number:</strong>
-    <%= @account.phone %>
-  </p>
+  <div class="col-md-4 info-box">
+    <% if @account.addresses %>
+      <% @account.addresses.each do |address| %>
+          <h2><%= address.type_name + " Address" %></h2>
+            <p>
+          c/o <strong><%= address.care_of %></strong>
+            <br />
+          <%= address.address1 %>
+            <br />
+          <% unless address.address2.blank? %>
+            <%= address.address2 %>
+          <% end %>
+            <br />
+          <%= address.city + ", " + address.state + "  " + address.zip_code %>
+            <br />
+          <%= link_to 'Delete', [address.account, address],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_account_address_path(address.account, address)%>
+        </p>
+      <% end %>
+    <% end %>
+    <%= link_to 'New Address', new_account_address_path(@account), :class => "btn btn-primary" %>
+  </div>
 
-  <p>
-    <strong>Email Address:</strong>
-    <%= @account.email %>
-  </p>
-
-  <p>
-    <strong>Address 1:</strong>
-    <%= @account.address1 %>
-  </p>
-
-  <p>
-    <strong>Address 2:</strong>
-    <%= @account.address2 %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= @account.city %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= @account.state %>
-  </p>
-
-  <p>
-    <strong>Zip code:</strong>
-    <%= @account.zip_code %>
-  </p>
-
-  <p>
-    <strong>Notes:</strong>
-    <%= @account.notes %>
-  </p>
+  <div class="col-md-4 info-box">
+    <h2>Invoice Info:</h2>
+  </div>
 </div>
 
-<div class="row actions">
-    <%= link_to "Back", accounts_path, :class => "btn btn-danger" %>
-    <%= link_to "Edit", edit_account_path(@account), :class => "btn btn-primary" %>
-</div>
+class AddUniqueIndexToReleases < ActiveRecord::Migration
+  def change
+    add_index :releases, [:country, :medium], unique: true
+  end
+end
+
+rails generate migration add_index_to_table_name column_name:uniq
+
+rails g migration add_unique_index_to_addresses account_id:uniq 
