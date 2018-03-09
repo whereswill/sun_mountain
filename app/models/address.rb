@@ -2,7 +2,7 @@ class Address < ApplicationRecord
   attr_accessor :type_name
 
   validates :address1, :city, :state, :zip_code, presence: true
-  # validates_inclusion_of :address_type, in: 1..2
+  validates :address_type, uniqueness: { scope: :account_id }
 
   belongs_to :account
 

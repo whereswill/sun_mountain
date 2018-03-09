@@ -59,13 +59,3 @@
     <h2>Invoice Info:</h2>
   </div>
 </div>
-
-class AddUniqueIndexToReleases < ActiveRecord::Migration
-  def change
-    add_index :releases, [:country, :medium], unique: true
-  end
-end
-
-rails generate migration add_index_to_table_name column_name:uniq
-
-rails g migration add_unique_index_to_addresses account_id:uniq 
