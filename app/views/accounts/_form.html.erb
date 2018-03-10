@@ -1,9 +1,11 @@
-<%= form_for(account) do |f| %>
+<div class="row">
 
-  <%= render 'shared/error_messages', target: account %>
+  <%= form_for(account) do |f| %>
 
-  <div class="row">
+    <%= render 'shared/error_messages', target: account %>
+
     <div class="col-md-6">
+      <h3>Account Info:</h3>
       <div class="field">
         <%= f.label :account_number %>
         <%= f.text_field :account_number, class: 'form-control'  %>
@@ -28,17 +30,20 @@
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control'  %>
       </div>
-    </div>
-    <div class="col-md-6">
+
       <div class="field">
         <%= f.label :notes %>
         <%= f.text_area :notes, class: 'form-control'  %>
       </div>
     </div>
-  </div>
 
-  <div class="actions">
-      <%= link_to "Cancel", accounts_path, :class => "btn btn-danger" %>
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <% if controller_name == 'accounts' && action_name == 'new' %>
+      <%= render 'accounts/address', f: f %>
+    <% end %>
+</div>
+
+<div class="actions row">
+    <%= link_to "Cancel", accounts_path, :class => "btn btn-danger" %>
+    <%= f.submit "Save changes", class: "btn btn-primary" %>
+</div>
+  <% end %>

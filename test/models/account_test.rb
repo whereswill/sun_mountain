@@ -22,26 +22,6 @@ class AccountTest < ActiveSupport::TestCase
     assert_not duplicate_account.valid?
   end
 
-  test "address1 should be present" do
-    @account.address1 = "     "
-    assert_not @account.valid?
-  end
-
-  test "city should be present" do
-    @account.city = "     "
-    assert_not @account.valid?
-  end
-
-  test "state should be present" do
-    @account.state = "     "
-    assert_not @account.valid?
-  end
-
-  test "zip should be present" do
-    @account.zip_code = "     "
-    assert_not @account.valid?
-  end
-
   test "email should not be too long" do
     @account.email = "a" * 244 + "@example.com"
     assert_not @account.valid?

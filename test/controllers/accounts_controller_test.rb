@@ -31,10 +31,6 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
       post accounts_url, params: { account: { account_number: "WW546",
                                               first_name: @account.first_name,
                                               last_name: @account.last_name,
-                                              address1: @account.address1,
-                                              city: @account.city,
-                                              state: @account.state,
-                                              zip_code: @account.zip_code,
                                               phone: @account.phone } }
     end
 
@@ -46,10 +42,6 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
       post accounts_url, params: { account: { account_number: "WW789",
                                               first_name: @account.first_name,
                                               last_name: @account.last_name,
-                                              address1: @account.address1,
-                                              city: @account.city,
-                                              state: @account.state,
-                                              zip_code: @account.zip_code,
                                               phone: @account.phone } }
     end
 
@@ -75,12 +67,18 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update account" do
     log_in_as(@user)
-    patch account_url(@account), params: { account: { address1: @account.address1, address2: @account.address2, city: @account.city, notes: @account.notes, state: @account.state, zip_code: @account.zip_code } }
+    patch account_url(@account), params: { account: { account_number: "WW789",
+                                          first_name: @account.first_name,
+                                          last_name: @account.last_name,
+                                          phone: @account.phone } }
     assert_redirected_to account_url(@account)
   end
 
   test "should redirect update account when not logged in" do
-    patch account_url(@account), params: { account: { address1: @account.address1, address2: @account.address2, city: @account.city, notes: @account.notes, state: @account.state, zip_code: @account.zip_code } }
+    patch account_url(@account), params: { account: { account_number: "WW789",
+                                          first_name: @account.first_name,
+                                          last_name: @account.last_name,
+                                          phone: @account.phone } }
     assert_redirected_to login_url
   end
 

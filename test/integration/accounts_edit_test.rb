@@ -11,10 +11,9 @@ class AccountsEditTest < ActionDispatch::IntegrationTest
   test "unsuccessful edit with invalid info" do
     get edit_account_path(@account)
     assert_template 'accounts/edit'
-    patch account_path(@account), params: { account: { address1:  "",
-                                              city: "",
-                                              state:  "",
-                                              zip_code: "" } }
+    patch account_path(@account), params: { account: { first_name:  "",
+                                              last_name: "",
+                                              phone:  "" } }
 
     assert_template 'accounts/edit'
     # assert_select 'div.alert-danger', "The form contains 4 errors."
@@ -23,16 +22,15 @@ class AccountsEditTest < ActionDispatch::IntegrationTest
   test "successful edit for admin" do
     get edit_account_path(@account)
     assert_template 'accounts/edit'
-    address1  = "333 N. High St."
-    zip_code = "89076"
-    patch account_path(@account), params: { account: { address1:  address1,
-                                              city: "Golden",
-                                              state:  "CO",
-                                              zip_code: zip_code } }
+    first_name  = "Howard"
+    phone = "541-555-6666"
+    patch account_path(@account), params: { account: { first_name:  first_name,
+                                              last_name: "Johnson",
+                                              phone:  phone } }
     assert_not flash.empty?
     assert_redirected_to @account
     @account.reload
-    assert_equal address1,  @account.address1
-    assert_equal zip_code, @account.zip_code
+    assert_equal first_name,  @account.first_name
+    assert_equal phone, @account.phone
   end
 end

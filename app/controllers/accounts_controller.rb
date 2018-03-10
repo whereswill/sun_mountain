@@ -17,6 +17,7 @@ class AccountsController < ApplicationController
   # GET /accounts/new
   def new
     @account = Account.new
+    @address = @account.addresses.build
   end
 
   # GET /accounts/1/edit
@@ -26,7 +27,7 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(account_params)
+    @account = Account.new(new_account_params)
 
     if @account.save
       flash[:success] = "Account was successfully created."
@@ -62,7 +63,14 @@ class AccountsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    def new_account_params
+      params.require(:account).permit(:account_number, :first_name, :last_name, :phone, :email, :notes,
+                                      addresses_attributes: [:address_type, :address1, :address2, :city, :state, :zip_code])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:account_number, :first_name, :last_name, :phone, :email, :notes)
+      params.require(:account).permit(:account_number, :first_name, :last_name, :phone, :email, :notes,
+                                      addresses_attributes: [:address_type, :address1, :address2, :city, :state, :zip_code])
     end
 end
