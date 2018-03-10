@@ -33,18 +33,20 @@
   <div class="col-md-4 info-box">
     <% if @account.addresses %>
       <% @account.addresses.each do |address| %>
-          <h2><%= address.type_name + " Address" %></h2>
-            <p>
-          c/o <strong><%= address.care_of %></strong>
+        <h3><%= address.type_name + " Address" %></h3>
+        <p>
+          <% unless address.care_of.blank? %>
+            c/o <strong><%= address.care_of %></strong>
             <br />
+          <% end %>
           <%= address.address1 %>
-            <br />
           <% unless address.address2.blank? %>
+            <br />
             <%= address.address2 %>
           <% end %>
-            <br />
+          <br />
           <%= address.city + ", " + address.state + "  " + address.zip_code %>
-            <br />
+          <br />
           <%= link_to 'Delete', [address.account, address],
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
@@ -52,10 +54,12 @@
         </p>
       <% end %>
     <% end %>
-    <%= link_to 'New Address', new_account_address_path(@account), :class => "btn btn-primary" %>
+    <% unless @account.addresses.count >= 2 %>
+      <%= link_to 'New Address', new_account_address_path(@account), :class => "btn btn-primary" %>
+    <% end %>
   </div>
 
   <div class="col-md-4 info-box">
-    <h2>Invoice Info:</h2>
+    <h3>Invoice Info:</h3>
   </div>
 </div>

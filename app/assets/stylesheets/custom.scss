@@ -70,7 +70,7 @@ p {
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 16px;
+  padding-top: 9px;
   font-weight: bold;
   &:hover {
     color: white;
@@ -159,21 +159,6 @@ input {
   margin-left: 8px;
 }
 
-.actions, .page-header {
-  a:link { 
-  color: #333333;
-  }
-  a:visited { 
-    color: #FFFFFF;
-  }
-  a:hover { 
-    color: #FFFFFF;
-  }
-  a:active { 
-    color: #333333;
-  }
-}
-
 #error_explanation {
   color: red;
   _margin-top: 200px;
@@ -253,16 +238,31 @@ table.dataTable thead .sorting {
   background-image: none;
 }
 
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0.5em;
+}
+
 /* miscellaneous */
 
+.info-box p {
+  margin: 0 0 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 0 5px 10px;
+}
+
 .page-header {
-  margin-top: 20px;
+  margin-top: 50px;
   h1 {
     margin-bottom: 15px;
   }
   .btn {
     margin-bottom: 20px;
   }
+}
+
+.jumbotron h1 {
+  margin-top: .67em;
 }
 
 .debug_dump {
