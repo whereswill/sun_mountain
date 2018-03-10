@@ -32,28 +32,33 @@ end
 
 # Accounts
 55.times do |n|
-  Account.create!(address1:     Faker::Address.street_address,
-                   address2:    Faker::Address.secondary_address,
-                   city:        Faker::Address.city,
-                   state:       Faker::Address.state_abbr,
-                   zip_code:    Faker::Address.zip_code,
-                   notes:       Faker::Seinfeld.quote,
+  Account.create!( notes:       Faker::Seinfeld.quote,
                    first_name:  Faker::Name.first_name,
                    last_name:   Faker::Name.last_name,
-                   account_number:   Faker::Number.number(4),
+                   account_number:   Faker::Number.number(3) + n.to_s,
                    phone:       Faker::PhoneNumber.phone_number,
                    email:       "email-#{n+1}@example.com")
 end
 
 #  Addresses
-accounts = Account.order(:account_number).take(6)
-  accounts.each do |account|
-    account.addresses.create!(address_type:      1,
+accounts = Account.all
+accounts.each do |account|
+  account.addresses.create!(address_type:      1,
+                          care_of:      Faker::Name.name,
+                          address1:     Faker::Address.street_address,
+                          address2:     Faker::Address.secondary_address,
+                          city:         Faker::Address.city,
+                          state:        Faker::Address.state_abbr,
+                          zip_code:     Faker::Address.zip_code)
+end
+
+accounts = Account.order(:account_number).take(5)
+accounts.each do |account|
+    account.addresses.create!(address_type:      2,
                             care_of:      Faker::Name.name,
                             address1:     Faker::Address.street_address,
                             address2:     Faker::Address.secondary_address,
                             city:         Faker::Address.city,
                             state:        Faker::Address.state_abbr,
                             zip_code:     Faker::Address.zip_code)
-  end
-3
+end

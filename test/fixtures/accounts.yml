@@ -4,11 +4,6 @@ one:
   account_number: "1234"
   first_name: "Julie"
   last_name: "Jenson"
-  address1: "1445 NW Giminy Street"
-  address2: "Apt. 65"
-  city: "Tumalo"
-  state: "OR"
-  zip_code: "97778"
   phone: "541-678-6789"
   email: "julie@example.com"
   notes: "This is a place to put account notes."
@@ -18,11 +13,6 @@ account_<%= n %>:
   account_number: <%= Faker::Number.number(4) %>
   first_name: <%= Faker::Name.first_name %>
   last_name: <%= Faker::Name.last_name %>
-  address1: <%= Faker::Address.street_address %>
-  address2: <%= Faker::Address.secondary_address %>
-  city: <%= Faker::Address.city %>
-  state: <%= Faker::Address.state_abbr %>
-  zip_code: <%= Faker::Address.zip_code %>
   phone: <%= Faker::PhoneNumber.phone_number %>
   email: <%= "example-#{n+1}@example.com" %>
   notes: <%= Faker::Seinfeld.quote %>
