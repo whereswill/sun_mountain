@@ -2,20 +2,30 @@
 
 one:
   address_type: 1
-  care_of: MyString
-  address1: MyString
-  address2: MyString
-  city: MyString
-  state: MyString
-  zip_code: MyString
+  care_of: 
+  address1: 635 NW High
+  address2: Apt. 2
+  city: Bend
+  state: OR
+  zip_code: 97707
   account: one
 
 two:
   address_type: 1
-  care_of: MyString
-  address1: MyString
-  address2: MyString
-  city: MyString
-  state: MyString
-  zip_code: MyString
+  care_of: Hilary
+  address1: 635 NW High
+  address2:
+  city: Bend
+  state: OR
+  zip_code: 97707
+  account: two
+
+three:
+  address_type: 2
+  care_of: Jimmy
+  address1: 7896 Going Up Ln.
+  address2: 
+  city: Tumalo
+  state: CA
+  zip_code: 87654
   account: two

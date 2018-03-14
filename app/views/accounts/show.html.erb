@@ -45,9 +45,11 @@
           <br />
           <%= address.city + ", " + address.state + "  " + address.zip_code %>
           <br />
-          <%= link_to 'Delete', [address.account, address],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+          <% unless address.address_type == 1 %>
+            <%= link_to 'Delete', [address.account, address],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
+          <% end %>
           <%= link_to 'Edit', edit_account_address_path(address.account, address)%>
         </p>
       <% end %>

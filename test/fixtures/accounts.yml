@@ -8,6 +8,14 @@ one:
   email: "julie@example.com"
   notes: "This is a place to put account notes."
 
+two:
+  account_number: "4321"
+  first_name: "Michael"
+  last_name: "Gallegar"
+  phone: "541-435-8765"
+  email: "michael@example.com"
+  notes: "This is a place to put account notes."
+
 <% 30.times do |n| %>
 account_<%= n %>:
   account_number: <%= Faker::Number.number(4) %>

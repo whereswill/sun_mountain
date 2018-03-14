@@ -1,6 +1,8 @@
 class AddressesController < ApplicationController
-  before_action :set_account,             only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_address,              only: [:edit, :update]
+  before_action :set_account,               only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_address,               only: [:edit, :update, :destroy]
+  before_action :logged_in_user,            only: [:new, :create, :edit, :update, :destroy]
+  before_action :preserve_delivery_address, only: [:destroy]
 
   def new
     @address = @account.addresses.build
@@ -29,7 +31,6 @@ class AddressesController < ApplicationController
   end
 
   def destroy
-    @address = @account.addresses.find(params[:id])
     @address.destroy
     flash[:success] = "Address was successfully destroyed."
     redirect_to account_path(@account)
@@ -47,6 +48,15 @@ class AddressesController < ApplicationController
 
     def address_params
       params.require(:address).permit!
+    end
+
+    # Won't allow deletion of the Delivery address as it could leave an account
+    # without an address
+    def preserve_delivery_address
+      if @address.address_type == 1
+        flash[:danger] = "Delivery Address cannot be deleted from account."
+        redirect_to account_path(@address.account)
+      end
     end
 
 end

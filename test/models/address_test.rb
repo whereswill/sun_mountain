@@ -3,26 +3,37 @@ require 'test_helper'
 class AddressTest < ActiveSupport::TestCase
 
   def setup
-    @account = addresses(:one)
+    @address = addresses(:one)
+  end
+
+  test "address_type should be present" do
+    @address.address_type = "     "
+    assert_not @address.valid?
   end
 
   test "address1 should be present" do
-    @account.address1 = "     "
-    assert_not @account.valid?
+    @address.address1 = "     "
+    assert_not @address.valid?
   end
 
   test "city should be present" do
-    @account.city = "     "
-    assert_not @account.valid?
+    @address.city = "     "
+    assert_not @address.valid?
   end
 
   test "state should be present" do
-    @account.state = "     "
-    assert_not @account.valid?
+    @address.state = "     "
+    assert_not @address.valid?
   end
 
   test "zip should be present" do
-    @account.zip_code = "     "
-    assert_not @account.valid?
+    @address.zip_code = "     "
+    assert_not @address.valid?
+  end
+
+  test "account_number and address_type should be unique" do
+    duplicate_address = @address.dup
+    @address.save
+    assert_not duplicate_address.valid?
   end
 end
