@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :accounts do
     resources :addresses
+    resources :invoices
   end
   get 'password_resets/new'
 

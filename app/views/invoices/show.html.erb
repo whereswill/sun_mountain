@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @invoice.status %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @invoice.notes %>
+</p>
+
+<p>
+  <strong>Late fee:</strong>
+  <%= @invoice.late_fee %>
+</p>
+
+<p>
+  <strong>Late fee:</strong>
+  <%= @invoice.late_fee %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @invoice.account %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

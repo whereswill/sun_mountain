@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  notes: MyText
+  late_fee: 5.00
+  account: one
+
+two:
+  status: MyString
+  notes: MyText
+  late_fee: 
+  account: two

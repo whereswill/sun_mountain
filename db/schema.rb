@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310004317) do
+ActiveRecord::Schema.define(version: 20180316004929) do
 
   create_table "accounts", force: :cascade do |t|
     t.text     "notes"
@@ -36,6 +36,24 @@ ActiveRecord::Schema.define(version: 20180310004317) do
     t.datetime "updated_at",   null: false
     t.index ["account_id", "address_type"], name: "index_addresses_on_account_id_and_address_type", unique: true
     t.index ["account_id"], name: "index_addresses_on_account_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string   "status"
+    t.text     "notes"
+    t.decimal  "late_fee",   precision: 6, scale: 2
+    t.integer  "account_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["account_id"], name: "index_invoices_on_account_id"
+  end
+
+  create_table "readings", force: :cascade do |t|
+    t.integer  "meter_reading"
+    t.integer  "account_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["account_id"], name: "index_readings_on_account_id"
   end
 
   create_table "users", force: :cascade do |t|

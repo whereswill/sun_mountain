@@ -10,5 +10,6 @@ class Account < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
 
   has_many :addresses, dependent: :destroy
-  accepts_nested_attributes_for :addresses
+  has_many :invoices, dependent: :destroy
+  accepts_nested_attributes_for :addresses, :invoices
 end

@@ -1,0 +1,42 @@
+<%= form_for(invoice) do |f| %>
+  <% if invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :late_fee %>
+    <%= f.text_field :late_fee %>
+  </div>
+
+  <div class="field">
+    <%= f.label :late_fee %>
+    <%= f.text_field :late_fee %>
+  </div>
+
+  <div class="field">
+    <%= f.label :account_id %>
+    <%= f.text_field :account_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
