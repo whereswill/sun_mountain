@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
+<div class="row page-header">
+  <h1>Invoice: <%= @invoice.created_at %></h1>
+</div>
 
 <p>
   <strong>Status:</strong>
@@ -16,14 +19,9 @@
 </p>
 
 <p>
-  <strong>Late fee:</strong>
-  <%= @invoice.late_fee %>
-</p>
-
-<p>
   <strong>Account:</strong>
   <%= @invoice.account %>
 </p>
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<%= link_to 'Edit', edit_account_invoice_path(@invoice) %> |
+<%= link_to 'Back', account_path(@invoice.account) %>

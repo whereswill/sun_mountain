@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 20180316004929) do
     t.index ["account_id"], name: "index_invoices_on_account_id"
   end
 
-  create_table "readings", force: :cascade do |t|
-    t.integer  "meter_reading"
-    t.integer  "account_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["account_id"], name: "index_readings_on_account_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"

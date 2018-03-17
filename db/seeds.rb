@@ -62,3 +62,11 @@ accounts.each do |account|
                             state:        Faker::Address.state_abbr,
                             zip_code:     Faker::Address.zip_code)
 end
+
+#  Invoices
+accounts = Account.all
+accounts.each do |account|
+  account.invoices.create!(status:      "draft",
+                          notes:        Faker::Seinfeld.quote,
+                          late_fee:     nil)
+end

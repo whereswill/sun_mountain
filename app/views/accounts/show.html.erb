@@ -61,5 +61,10 @@
 
   <div class="col-md-4 info-box">
     <h3>Invoice History</h3>
+    <% @account.invoices.each do |invoice| %>
+      <%= link_to 'Show', account_invoice_path(invoice.account, invoice) %> |
+    <% end %>
+    <%= link_to 'New', new_account_invoice_path(@account) %> |
+    <%= link_to 'All Invoices', account_invoices_path(@account) %>
   </div>
 </div>

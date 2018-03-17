@@ -3,7 +3,17 @@ require 'test_helper'
 class AddressTest < ActiveSupport::TestCase
 
   def setup
-    @address = addresses(:one)
+    @account = accounts(:one)
+    @address = @account.addresses.build(account_id: @account.id,
+                                        address_type: 2,
+                                        address1: "123 Test Lane",
+                                        city: "Bend",
+                                        state: "OR",
+                                        zip_code: "78654")
+  end
+
+  test "test @address should be valid" do
+    assert @address.valid?
   end
 
   test "address_type should be present" do
