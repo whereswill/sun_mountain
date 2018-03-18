@@ -1,6 +1,7 @@
 class InvoicesController < ApplicationController
   before_action :set_account,               only: [:index, :new, :edit, :create, :update, :destroy]
   before_action :set_invoice,               only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user,            only: [:new, :index, :create, :edit, :update, :destroy]
 
   # GET /invoices
   def index
@@ -22,17 +23,6 @@ class InvoicesController < ApplicationController
 
   # POST /invoices
   def create
-    # @invoice = Invoice.new(invoice_params)
-
-    # respond_to do |format|
-    #   if @invoice.save
-    #     format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
-    #     format.json { render :show, status: :created, location: @invoice }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @invoice.errors, status: :unprocessable_entity }
-    #   end
-    # end
     @invoice = @account.invoices.create(invoice_params)
     if @invoice.save
       flash[:success] = "Invoice was successfully created."

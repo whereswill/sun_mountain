@@ -1,32 +1,34 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'All invoices') %>
 
-<h1>Invoices</h1>
+<div class="row page-header">
+  <h1>Invoices</h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Status</th>
-      <th>Notes</th>
-      <th>Late fee</th>
-      <th>Account</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @invoices.each do |invoice| %>
+<div class="row">
+  <table id="invoices" role="datatable" class="display">
+    <thead>
       <tr>
-        <td><%= invoice.status %></td>
-        <td><%= invoice.notes %></td>
-        <td><%= invoice.late_fee %></td>
-        <td><%= invoice.account %></td>
-        <td><%= link_to 'Show', [invoice.account, invoice] %></td>
-        <td><%= link_to 'Edit', edit_account_invoice_path(invoice.account, invoice) %></td>
-        <td><%= link_to 'Destroy', [invoice.account, invoice], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Status</th>
+        <th>Late fee</th>
+        <th>Account</th>
+        <th class='action_col nosort' >Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr id="invoice-<%= invoice.id %>">
+          <td><%= invoice.status %></td>
+          <td><%= invoice.late_fee %></td>
+          <td><%= invoice.account %></td>
+          <td>
+            <%= link_to 'Show', [invoice.account, invoice] %>
+            <%= link_to 'Edit', edit_account_invoice_path(invoice.account, invoice) %>
+            <%= link_to 'Destroy', [invoice.account, invoice], method: :delete, data: { confirm: 'Are you sure?' } %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
