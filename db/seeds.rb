@@ -70,3 +70,12 @@ accounts.each do |account|
                           notes:        Faker::Seinfeld.quote,
                           late_fee:     nil)
 end
+
+accounts = Account.all
+accounts.each do |account|
+  5.times do |n|
+    account.invoices.create!(status:      "paid",
+                            notes:        Faker::Seinfeld.quote,
+                            late_fee:     nil)
+  end
+end

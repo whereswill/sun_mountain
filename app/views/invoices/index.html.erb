@@ -23,8 +23,10 @@
           <td><%= invoice.account %></td>
           <td>
             <%= link_to 'Show', [invoice.account, invoice] %>
-            <%= link_to 'Edit', edit_account_invoice_path(invoice.account, invoice) %>
-            <%= link_to 'Destroy', [invoice.account, invoice], method: :delete, data: { confirm: 'Are you sure?' } %> 
+            <% unless  invoice.status == 'paid' %>
+              <%= link_to 'Edit', edit_account_invoice_path(invoice.account, invoice) %>
+              <%= link_to 'Destroy', [invoice.account, invoice], method: :delete, data: { confirm: 'Are you sure?' } %> 
+            <% end %>
           </td>
         </tr>
       <% end %>

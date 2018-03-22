@@ -11,3 +11,12 @@ two:
   notes: MyText
   late_fee: 
   account: two
+
+<% 5.times do |i| %>
+invoice_<%= i %>:
+  status: paid
+  notes: Notes for invoice_<%= i %>
+  late_fee:
+  created_at: <%= (Date.today - (30*i)).to_s %>
+  account: one
+<% end %>

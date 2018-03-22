@@ -23,5 +23,7 @@
   <%= @invoice.account %>
 </p>
 
-<%= link_to 'Edit', edit_account_invoice_path(@invoice) %> |
+<% unless @invoice.status == 'paid' %>
+	<%= link_to 'Edit', edit_account_invoice_path(@invoice.account, @invoice) %> |
+<% end %>
 <%= link_to 'Back', account_path(@invoice.account) %>
