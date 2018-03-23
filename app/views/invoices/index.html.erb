@@ -1,7 +1,8 @@
 <% provide(:title, 'All invoices') %>
 
 <div class="row page-header">
-  <h1>Invoices</h1>
+  <h1>Account Number: <%= @account.account_number %></h1>
+  <h3>Invoices</h3>
 </div>
 
 <div class="row">
@@ -19,7 +20,7 @@
       <% @invoices.each do |invoice| %>
         <tr id="invoice-<%= invoice.id %>">
           <td><%= invoice.status %></td>
-          <td><%= invoice.late_fee %></td>
+          <td><%= number_to_currency(invoice.late_fee) %></td>
           <td><%= invoice.account %></td>
           <td>
             <%= link_to 'Show', [invoice.account, invoice] %>

@@ -1,4 +1,5 @@
 class Account < ApplicationRecord
+  attr_accessor :delivery_address
 
   before_save   :downcase_email
   validates :account_number, presence: true,
@@ -12,4 +13,15 @@ class Account < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :invoices, dependent: :destroy
   accepts_nested_attributes_for :addresses, :invoices
+
+  def delivery_address
+    # address = self.addresses.where(address_type: 1)
+    # binding.pry
+    # address.address1
+
+    self.addresses.each do |a|
+      # binding.pry
+      return a.address1 if a.type_name == "Delivery"
+    end
+  end
 end
