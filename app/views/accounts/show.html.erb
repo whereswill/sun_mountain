@@ -31,7 +31,7 @@
   <div class="col-md-4 info-box">
     <% if @account.addresses %>
       <% @account.addresses.each do |address| %>
-        <h3><%= address.type_name + " Address" %></h3>
+        <h3><%= "#{address.address_type.titleize} Address" %></h3>
         <p>
           <% unless address.care_of.blank? %>
             c/o <strong><%= address.care_of %></strong>

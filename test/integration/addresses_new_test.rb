@@ -19,7 +19,7 @@ class AddressesNewTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Address.count' do
       post account_addresses_path(id: @account.id,
                               account_id: @account.id,
-                               address: { address_type: 2,
+                               address: { address_type: "mailing",
                                           address1: "",
                                           city: ""})
     end
@@ -34,7 +34,7 @@ class AddressesNewTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Address.count' do
       post account_addresses_path(id: @account.id,
                               account_id: @account.id,
-                               address: { address_type: 1,
+                               address: { address_type: "delivery",
                                           address1: "655 Fake Road",
                                           city: "New York",
                                           state: "NY",
@@ -51,7 +51,7 @@ class AddressesNewTest < ActionDispatch::IntegrationTest
     assert_difference 'Address.count', 1 do
       post account_addresses_path(id: @account.id,
                               account_id: @account.id,
-                               address: { address_type: 2,
+                               address: { address_type: "mailing",
                                           address1: "655 Fake Road",
                                           city: "New York",
                                           state: "NY",

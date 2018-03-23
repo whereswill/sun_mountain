@@ -43,7 +43,7 @@ end
 #  Addresses
 accounts = Account.all
 accounts.each do |account|
-  account.addresses.create!(address_type:      1,
+  account.addresses.create!(address_type:     "delivery",
                           care_of:      Faker::Name.name,
                           address1:     Faker::Address.street_address,
                           address2:     Faker::Address.secondary_address,
@@ -54,7 +54,7 @@ end
 
 accounts = Account.order(:account_number).take(5)
 accounts.each do |account|
-    account.addresses.create!(address_type:      2,
+    account.addresses.create!(address_type:      "mailing",
                             care_of:      Faker::Name.name,
                             address1:     Faker::Address.street_address,
                             address2:     Faker::Address.secondary_address,

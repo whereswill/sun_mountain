@@ -11,7 +11,7 @@
 
       <div class="field">
         <%= f.label :address_type %>
-        <%= f.select(:address_type, [['Point of Delivery', 1], ['Mailing Address', 2]]) %>
+        <%= f.select :address_type, Address.address_types.keys %>
       </div>
     </div>
     <div class="col-md-6">

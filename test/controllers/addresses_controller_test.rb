@@ -36,7 +36,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_difference('Address.count') do
       post account_addresses_url(account_id: @account.id,
-                                 address: { address_type: 2,
+                                 address: { address_type: "mailing",
                                             address1: @address.address1,
                                             city: @address.city,
                                             state: @address.state,
@@ -61,7 +61,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     patch account_address_url(id: @account.id,
                               account_id: @account.id,
-                               address: { address_type: 2,
+                               address: { address_type: "mailing",
                                           address1: "123 Test Lane",
                                           city: @address.city,
                                           state: @address.state,
@@ -73,7 +73,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   test "should redirect update address when not logged in" do
     patch account_address_url(id: @account.id,
                               account_id: @account.id,
-                               address: { address_type: 2,
+                               address: { address_type: "mailing",
                                           address1: "123 Test Lane",
                                           city: @address.city,
                                           state: @address.state,

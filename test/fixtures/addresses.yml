@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  address_type: 1
+  address_type: delivery
   care_of: 
   address1: 635 NW High
   address2: Apt. 2
@@ -11,7 +11,7 @@ one:
   account: one
 
 two:
-  address_type: 1
+  address_type: delivery
   care_of: Hilary
   address1: 635 NW High
   address2:
@@ -21,7 +21,7 @@ two:
   account: two
 
 three:
-  address_type: 2
+  address_type: mailing
   care_of: Jimmy
   address1: 7896 Going Up Ln.
   address2: 

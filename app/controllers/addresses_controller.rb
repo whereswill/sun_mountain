@@ -53,7 +53,7 @@ class AddressesController < ApplicationController
     # Won't allow deletion of the Delivery address as it could leave an account
     # without an address
     def preserve_delivery_address
-      if @address.address_type == 1
+      if @address.address_type == "delivery"
         flash[:danger] = "Delivery Address cannot be deleted from account."
         redirect_to account_path(@address.account)
       end

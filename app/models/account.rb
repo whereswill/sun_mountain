@@ -15,13 +15,8 @@ class Account < ApplicationRecord
   accepts_nested_attributes_for :addresses, :invoices
 
   def delivery_address
-    # address = self.addresses.where(address_type: 1)
-    # binding.pry
-    # address.address1
-
     self.addresses.each do |a|
-      # binding.pry
-      return a.address1 if a.type_name == "Delivery"
+      return a.address1 if a.address_type == "delivery"
     end
   end
 end

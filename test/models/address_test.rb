@@ -5,7 +5,7 @@ class AddressTest < ActiveSupport::TestCase
   def setup
     @account = accounts(:one)
     @address = @account.addresses.build(account_id: @account.id,
-                                        address_type: 2,
+                                        address_type: "mailing",
                                         address1: "123 Test Lane",
                                         city: "Bend",
                                         state: "OR",

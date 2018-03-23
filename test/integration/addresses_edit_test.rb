@@ -14,7 +14,7 @@ class AddressesEditTest < ActionDispatch::IntegrationTest
     assert_template 'addresses/edit'
     patch account_address_path(id: @account.id,
                               account_id: @account.id,
-                               address: { address_type: 2,
+                               address: { address_type: "mailing",
                                           address1: "",
                                           city: ""})
 
@@ -28,7 +28,7 @@ class AddressesEditTest < ActionDispatch::IntegrationTest
     city = "Bismark"
     patch account_address_path(id: @account.id,
                               account_id: @account.id,
-                               address: { address_type: 2,
+                               address: { address_type: "mailing",
                                           address1: address1,
                                           city: city})
     assert_not flash.empty?
