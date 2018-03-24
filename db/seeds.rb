@@ -67,6 +67,7 @@ end
 accounts = Account.all
 accounts.each do |account|
   account.invoices.create!(status:      "draft",
+                          invoice_date: Date.today - 1,
                           notes:        Faker::Seinfeld.quote,
                           late_fee:     nil)
 end
@@ -75,6 +76,7 @@ accounts = Account.all
 accounts.each do |account|
   5.times do |n|
     account.invoices.create!(status:      "paid",
+                            invoice_date: Date.today - ((n+1) * 30),
                             notes:        Faker::Seinfeld.quote,
                             late_fee:     nil)
   end

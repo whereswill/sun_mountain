@@ -4,6 +4,11 @@
 </div>
 
 <p>
+  <strong>Invoice Date:</strong>
+  <%= @invoice.invoice_date %>
+</p>
+
+<p>
   <strong>Status:</strong>
   <%= @invoice.status %>
 </p>
@@ -16,11 +21,6 @@
 <p>
   <strong>Late fee:</strong>
   <%= @invoice.late_fee %>
-</p>
-
-<p>
-  <strong>Account:</strong>
-  <%= @invoice.account %>
 </p>
 
 <% unless @invoice.status == 'paid' %>

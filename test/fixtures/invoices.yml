@@ -2,12 +2,14 @@
 
 one:
   status: draft
+  invoice_date: <%= (Date.today - 1).to_s %>
   notes: MyText
   late_fee: 5.00
   account: one
 
 two:
   status: sent
+  invoice_date: <%= (Date.today - 30).to_s %>
   notes: MyText
   late_fee: 
   account: two
@@ -15,6 +17,7 @@ two:
 <% 5.times do |i| %>
 invoice_<%= i %>:
   status: paid
+  invoice_date: <%= (Date.today - (30*i)).to_s %>
   notes: Notes for invoice_<%= i %>
   late_fee:
   created_at: <%= (Date.today - (30*i)).to_s %>

@@ -35,6 +35,7 @@ $(document).on('turbolinks:load', function() {
   // Check dataTables documentation to learn more about available options.
   // http://datatables.net/reference/option/pagingType
 });
+    // table.column('.descending').order('desc').draw();
 } );
 
 

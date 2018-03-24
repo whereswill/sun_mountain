@@ -8,9 +8,4 @@ class Address < ApplicationRecord
 
   enum address_type: [:delivery, :mailing]
 
-  # def type_name
-  #   name = {1 => "Delivery",
-  #           2 => "Mailing"}
-  #   name[self.address_type] ||= "Unknown"
-  # end
 end

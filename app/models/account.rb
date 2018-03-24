@@ -2,6 +2,7 @@ class Account < ApplicationRecord
   attr_accessor :delivery_address
 
   before_save   :downcase_email
+
   validates :account_number, presence: true,
                              uniqueness: { case_sensitive: false }
   validates :first_name, :last_name, :phone, presence: true

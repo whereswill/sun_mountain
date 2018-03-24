@@ -5,8 +5,15 @@
   <div class="row">
     <div class="col-md-6">
       <div class="field">
+        <%= f.label :invoice_date %>
+        <%= f.date_select :invoice_date,
+                          {:order => [:month, :day, :year]},
+                          {:class => "form-control"} %>
+      </div>
+
+      <div class="field">
         <%= f.label :status %>
-        <%= f.select(:status, [['Draft', 'draft'], ['Sent', 'sent'], ['Paid', 'paid']]) %>
+        <%= f.select :status, Invoice.statuses.keys, { :class => 'form-control' } %>
       </div>
 
       <div class="field">
