@@ -19,6 +19,8 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1/edit
   def edit
+    # would need to reformat this when it comes back to the update method
+    # @invoice.invoice_date = input_date(@invoice.invoice_date)
   end
 
   # POST /invoices

@@ -18,6 +18,7 @@ gem 'figaro',                  '1.1.1'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

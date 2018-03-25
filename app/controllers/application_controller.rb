@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
+
+    def input_date(input_date)
+      return input_date.strftime("%m/%d/%Y")
+    end
 end

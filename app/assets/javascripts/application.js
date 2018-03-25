@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require bootstrap-datepicker
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
@@ -38,6 +39,13 @@ $(document).on('turbolinks:load', function() {
     // table.column('.descending').order('desc').draw();
 } );
 
+$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
+    $(this).datepicker({
+      "format": 'mm/dd/yyyy', 
+      "weekStart": 1, 
+      "autoclose": true
+    })
+});
 
 
 // $(document).on('turbolinks:load', function(){

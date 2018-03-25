@@ -13,6 +13,7 @@
  *= require jquery-ui
  *= require datatables/jquery.dataTables.scss
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require bootstrap-datepicker3
  *= require_self
  *= require_tree .
  */

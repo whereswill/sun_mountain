@@ -17,5 +17,4 @@ module ApplicationHelper
   def display_date(input_date)
     return input_date.strftime("%b. %e, %Y")
   end
-
 end
