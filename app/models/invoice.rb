@@ -3,7 +3,7 @@ class Invoice < ApplicationRecord
 
   belongs_to :account
 
-  validates :account_id, :presence => true
+  validates :account_id, :invoice_date, :presence => true
   validates :status, inclusion: { in: %w(draft sent paid) }
   validates :late_fee, numericality: { allow_nil: true }
   belongs_to :account

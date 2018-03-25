@@ -36,6 +36,7 @@ class InvoicesNewTest < ActionDispatch::IntegrationTest
                               account_id: @account.id,
                                invoice: { status: "paid",
                                           late_fee: 5.00,
+                                          invoice_date: Date.today,
                                           notes: ""})
     end
     assert_not flash.empty?

@@ -7,7 +7,8 @@ class InvoiceTest < ActiveSupport::TestCase
     @invoice = @account.invoices.build(account_id: @account.id,
                                         status: "draft",
                                         notes: "foobar",
-                                        late_fee: 5.00)
+                                        late_fee: 5.00,
+                                        invoice_date: Date.today)
   end
 
   test "test @invoice should be valid" do
@@ -16,6 +17,11 @@ class InvoiceTest < ActiveSupport::TestCase
 
   test "status should be present" do
     @invoice.status = "     "
+    assert_not @invoice.valid?
+  end
+
+  test "invoice_date should be present" do
+    @invoice.invoice_date = "     "
     assert_not @invoice.valid?
   end
 

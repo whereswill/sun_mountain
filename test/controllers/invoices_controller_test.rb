@@ -43,6 +43,7 @@ class InvoicesControllerTest < ActionDispatch::IntegrationTest
       post account_invoices_url(account_id: @account.id,
                                  invoice: { status: @invoice.status,
                                           late_fee: @invoice.late_fee,
+                                          invoice_date: Date.today,
                                           notes: @invoice.notes })
     end
 
