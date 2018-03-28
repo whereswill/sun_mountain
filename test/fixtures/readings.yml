@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reading: 1
+  invoice: one
+
+two:
+  reading: 1
+  invoice: one
+
+three:
+  reading: 1
+  invoice: two

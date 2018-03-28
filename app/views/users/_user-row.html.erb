@@ -18,7 +18,7 @@
         <% end %>
     </td>
     <td>
-        <span><%= display_date_time(user.last_logged_in) unless !user.last_logged_in %></span>
+        <span><%= user.last_logged_in.to_s(:nice_datetime) unless !user.last_logged_in %></span>
     </td>
     <td>
         <% if current_user.admin? %>

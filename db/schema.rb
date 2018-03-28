@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323220203) do
+ActiveRecord::Schema.define(version: 20180326001440) do
 
   create_table "accounts", force: :cascade do |t|
     t.text     "notes"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20180323220203) do
     t.integer  "status"
     t.date     "invoice_date"
     t.index ["account_id"], name: "index_invoices_on_account_id"
+  end
+
+  create_table "readings", force: :cascade do |t|
+    t.integer  "reading"
+    t.integer  "invoice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_readings_on_invoice_id"
   end
 
   create_table "users", force: :cascade do |t|

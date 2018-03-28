@@ -41,9 +41,10 @@ $(document).on('turbolinks:load', function() {
 
 $(document).on("focus", "[data-behaviour~='datepicker']", function(e){
     $(this).datepicker({
-      "format": 'mm/dd/yyyy', 
+      "format": 'yyyy-mm-dd', 
       "weekStart": 1, 
-      "autoclose": true
+      "autoclose": true,
+      "todayHighlight": true
     })
 });
 

@@ -94,3 +94,19 @@ accounts.each do |account|
                             late_fee:     nil)
   end
 end
+
+invoices = Invoice.all
+invoices.each do |invoice|
+  invoice.readings.create!(reading:      7500,
+                          created_at: invoice.invoice_date - 5,
+                          updated_at: invoice.invoice_date - 5)
+end
+
+# invoices = Invoice.all
+# invoices.each do |invoice|
+#   5.times do |n|
+#     invoice.readings.create!(reading:      7500 - (200 * n),
+#                             created_at: Date.today - ((n+1) * 30),
+#                             updated_at: Date.today - ((n+1) * 30))
+#   end
+# end
