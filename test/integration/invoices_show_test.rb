@@ -14,6 +14,6 @@ class InvoicesShowTest < ActionDispatch::IntegrationTest
     assert_template 'invoices/show'
     assert_select 'a[href=?]', edit_account_invoice_path(@account, @invoice)
     assert_select 'a[href=?]', account_path(@account)
-    assert_select 'h1', "Invoice: #{@invoice.created_at}"
+    assert_select 'h1', "Invoice: #{@invoice.invoice_date.to_s(:common)}"
   end
 end

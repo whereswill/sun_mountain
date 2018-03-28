@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 <div class="row page-header">
-  <h1>Invoice: <%= @invoice.created_at %></h1>
+  <h1>Invoice: <%= @invoice.invoice_date.to_s(:common) %></h1>
 </div>
 
 <p>
   <strong>Invoice Date:</strong>
-  <%= display_date(@invoice.invoice_date) %>
+  <%= @invoice.invoice_date.to_s(:common) %>
 </p>
 
 <p>
